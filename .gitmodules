@@ -1,0 +1,3 @@
+[submodule "tests/everand"]
+	path = tests/everand
+	url = https://github.com/vsyn/everand.git
