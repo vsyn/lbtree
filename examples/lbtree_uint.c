@@ -35,7 +35,7 @@ void *lbtree_uint_add(struct lbtree_uint **tree, struct lbtree_uint *node) {
 
   struct lbtree_uint *match =
       (struct lbtree_uint *)lbtree(&(*tree)->base, &sel_key, &node->key);
-  lbtree_index_t index = sizeof(unsigned long int) * CHAR_BIT;
+  lbtree_index_t index = sizeof(lbtree_uint_t) * CHAR_BIT;
 
   lbtree_uint_t da = node->key;
   lbtree_uint_t db = match->key;
