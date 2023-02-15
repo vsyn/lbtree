@@ -34,10 +34,10 @@ pair is replaced by this function), or zero if one is not found. `val` on memory
 allocation error.
 */
 void *lbtree_d_add(struct lbtree_d **size_tree, void *key,
-                        lbtree_index_t key_size_bits, void *val);
+                   lbtree_index_t key_size_bits, void *val);
 
 static inline void *lbtree_dc_add(struct lbtree_d **size_tree, void *key,
-                                 lbtree_index_t key_size, void *val) {
+                                  lbtree_index_t key_size, void *val) {
   lbtree_index_t key_size_bits = key_size * CHAR_BIT;
   return ((key_size_bits / CHAR_BIT) != key_size)
              ? key
@@ -50,10 +50,10 @@ Returns the value whose associated key matches the `key` argument, or zero if
 one is not found.
 */
 void *lbtree_d(struct lbtree_d *size_tree, void *key,
-                    lbtree_index_t key_size_bits);
+               lbtree_index_t key_size_bits);
 
 static inline void *lbtree_dc(struct lbtree_d *size_tree, void *key,
-                             lbtree_index_t key_size) {
+                              lbtree_index_t key_size) {
   lbtree_index_t key_size_bits = key_size * CHAR_BIT;
   return ((key_size_bits / CHAR_BIT) != key_size)
              ? 0
@@ -65,10 +65,10 @@ Removes a single key value pair from the tree.
 Returns the associated value if found and removed, otherwise zero.
 */
 void *lbtree_d_rm(struct lbtree_d **size_tree, void *key,
-                       lbtree_index_t key_size_bits);
+                  lbtree_index_t key_size_bits);
 
 static inline void *lbtree_dc_rm(struct lbtree_d **size_tree, void *key,
-                                lbtree_index_t key_size) {
+                                 lbtree_index_t key_size) {
   lbtree_index_t key_size_bits = key_size * CHAR_BIT;
   return ((key_size_bits / CHAR_BIT) != key_size)
              ? 0

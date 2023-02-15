@@ -43,7 +43,7 @@ static inline unsigned int get_shift(unsigned char a, unsigned char b) {
 }
 
 void *lbtree_d_add(struct lbtree_d **size_tree, void *key,
-                        lbtree_index_t key_size_bits, void *val) {
+                   lbtree_index_t key_size_bits, void *val) {
   if (*size_tree == 0) {
     struct lbtree_d_size *size_node = malloc(sizeof(*size_node));
     if (size_node == 0) {
@@ -67,8 +67,8 @@ void *lbtree_d_add(struct lbtree_d **size_tree, void *key,
     return 0;
   }
 
-  struct lbtree_d_size *size_best = (struct lbtree_d_size *)lbtree(
-      (struct lbtree *)*size_tree, &sel_key, &key_size_bits);
+  struct lbtree_d_size *size_best =
+      lbtree(&(*size_tree)->base, &sel_key, &key_size_bits);
 
   unsigned char *ka;
   unsigned char *kb;
@@ -169,7 +169,7 @@ static int match(unsigned char *ka, unsigned char *kb,
 }
 
 void *lbtree_d(struct lbtree_d *size_tree, void *key,
-                    lbtree_index_t key_size_bits) {
+               lbtree_index_t key_size_bits) {
   struct lbtree_d *size_best =
       lbtree(&size_tree->base, &sel_key, &key_size_bits);
   if ((*(lbtree_index_t *)size_best->key) != key_size_bits) {
@@ -192,7 +192,7 @@ static void rm_leaf_pos(struct lbtree **tree,
 }
 
 void *lbtree_d_rm(struct lbtree_d **size_tree, void *key,
-                       lbtree_index_t key_size_bits) {
+                  lbtree_index_t key_size_bits) {
   if (*size_tree == 0) {
     return 0;
   }
